@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign UP</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7f7f7;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px auto;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        form input {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid black;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        form input[type="submit"] {
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sign Up</h1>
+    <a href="javascript:history.back()">Last page</a>
+    <a href="/">Home</a>
+
+    <form id="form" action="/users/new" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="url" name="image" placeholder="Image">
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <script>
+        const form = document.getElementById('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = document.getElementsByName('username')[0].value;
+            const name = document.getElementsByName('name')[0].value;
+            const email = document.getElementsByName('email')[0].value;
+            const password = document.getElementsByName('password')[0].value;
+            const image = document.getElementsByName('image')[0].value || null;
+
+            const data = {
+                username,
+                name,
+                email,
+                password,
+                image
+            }
+
+            fetch('/users/new', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+        });    
+    </script>
+</body>
+</html>

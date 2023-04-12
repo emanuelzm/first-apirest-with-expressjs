@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi</title>
+    <style>
+        main {
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover {
+            color: #000;
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        i {
+            color: #000;
+        }
+
+        i:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Hi</h1>
+        <ul>
+            <li> > <a href="/users/db">Go to the database (JSON)</a></li>
+            <li> > <a href="/users">Go to the database GUI</a></li>
+            <li> > <a href="/users/new">Sign Up</a></li>
+            <hr>
+            <li><strong><i>POST</i></strong>: /users/new</li>
+            <li><strong><i>UPDATE</i></strong>: /users/update/<i>UserId</i></li>
+            <li><strong><i>DELETE</i></strong>: /users/delete/<i>UserId</i></li>
+        </ul>
+    </main>
+</body>
+</html>
