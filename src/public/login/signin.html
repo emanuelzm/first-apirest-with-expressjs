@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign UP</title>
+    <title>Sign IN</title>
 
     <style>
         body {
@@ -62,17 +62,14 @@
 </head>
 <body>
 
-    <h1>Sign Up</h1>
+    <h1>Sign IN</h1>
     <a href="javascript:history.back()">Last page</a>
     <a href="/">Home</a>
 
-    <form id="form" action="/users/signup" method="POST">
+    <form id="form" action="/users/signin" method="POST">
         <input type="text" name="username" placeholder="Username" required>
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
-        <input type="url" name="image" placeholder="Image">
-        <input type="submit" value="Sign Up">
+        <input type="submit" value="Sign IN">
     </form>
 
     <script>
@@ -81,29 +78,29 @@
             e.preventDefault();
 
             const username = document.getElementsByName('username')[0].value;
-            const name = document.getElementsByName('name')[0].value;
-            const email = document.getElementsByName('email')[0].value;
             const password = document.getElementsByName('password')[0].value;
-            const image = document.getElementsByName('image')[0].value || null;
 
             const data = {
                 username,
-                name,
-                email,
-                password,
-                image
+                password
             }
 
-            fetch('/users/signup', {
+            fetch('/users/signin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
-            })
+            })            
             .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err));
+            .then(data => {
+                if (data.user.length == 1) {
+                    window.location.href = "/dashboard/" + data.user[0]._id + "/";
+                } else {
+                    alert("Username or password is incorrect");
+                }
+            })
+            .catch(err => console.log("error", err));
         });    
     </script>
 </body>
