@@ -86,7 +86,7 @@
                     const div = document.createElement('div');
                     div.innerHTML = `
                         <p><strong><i>@${user.username}</i></strong></p>
-                        <p><img src="${user.image}" alt="${user.username}"/></p>
+                        <p><img src="${user.image || 'https://i1.wp.com/static.teamtreehouse.com/assets/content/default_avatar-ea7cf6abde4eec089a4e03cc925d0e893e428b2b6971b12405a9b118c837eaa2.png?ssl=1'}" alt="${user.username}"/></p>
                         <p><strong><i>Nombre</i>: </strong> ${user.name}</p>
                         <p><strong><i>Email</i>: </strong> ${user.email}</p>
                         <p><strong><i>Id</i>: </strong> ${user._id}</p>
