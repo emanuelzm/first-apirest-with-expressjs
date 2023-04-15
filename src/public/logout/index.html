@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <style>
+        body {
+            background: #eee;
+        }
+
+        main {
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Logout</h1>
+        <hr>
+        Click on: <strong><i><a href="javascript:logout()">Logout</a></i></strong> for exit of your account.
+        <script>
+            if (localStorage.getItem("token") == null) {
+                window.location.href = "/users/signin";
+            }
+
+            function logout() {
+                localStorage.removeItem("token");
+                window.location.href = "/users/signin";
+            }
+        </script>
+    </main>
+</body>
+</html>

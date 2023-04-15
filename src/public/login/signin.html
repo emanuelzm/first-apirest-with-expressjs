@@ -95,6 +95,7 @@
             .then(res => res.json())
             .then(data => {
                 if (data.user.length == 1) {
+                    localStorage.setItem('token', btoa(data._id));
                     window.location.href = "/dashboard/" + data.user[0]._id + "/";
                 } else {
                     alert("Username or password is incorrect");

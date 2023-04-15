@@ -63,6 +63,7 @@
     <main>
         <h1>Dashboard User</h1>
         <a href="javascript:history.back()">Last page</a>
+        <a href="/users/logout">Salir</a>
         <a href="/">Home</a>
 
         <div class="container">
@@ -78,6 +79,7 @@
         const data = document.querySelector('.data');
         const id = window.location.pathname.substring(11).slice(0, 24);
         const url = '/users/db/user/' + id;
+        const info = [];
 
         fetch(url)
             .then(res => res.json())
@@ -95,8 +97,26 @@
                     `;
                     data.appendChild(div);
                 });
+                info.push(res[0]);
             })
             .catch(err => console.log(err));
+
+        if (localStorage.getItem('token') === null) {
+            window.location.href = '/users/signin';
+        } else {
+            const token = localStorage.getItem('token');
+            if (atob(localStorage.getItem('token')).includes('admin') == true) {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <a href="/users/db">Dashboard Admin</a>
+                `;
+                data.appendChild(div);
+            }
+
+            if (!atob(localStorage.getItem("token")) == info._id[0]) {
+                window.location.href = '/users/logout';
+            }
+        }
     </script>
 </body>
 </html>

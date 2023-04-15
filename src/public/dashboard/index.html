@@ -7,6 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    This page is unavailable. Go to <a href="/users/login">Login</a> to enter your account.
+    This page is unavailable, go to your account. <a href="/users/login">Login</a>
+
+    <script>
+        alert("Access to your account is denied or go to your dashboard.");
+        window.location.href = "/users/signin";
+
+        if (localStorage.getItem("token") == null) {
+            window.location.href = "/users/signin";
+        } else {
+            window.location.href = "/dashboard/" + atob(localStorage.getItem("token"));
+        }
+    </script>
 </body>
 </html>

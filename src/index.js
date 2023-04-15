@@ -106,6 +106,10 @@ app.post("/users/signin", async (req, res) => {
             })
 });
 
+app.get("/users/logout", (req, res) => {
+    res.sendFile("./logout/index.html", { root: "./src/public" });
+});
+
 // Ruta para el dashboard
 
 app.get("/dashboard/", (req, res) => {
